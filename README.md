@@ -59,6 +59,9 @@ R.isString(obj);
 // isUndefned :: * -> Boolean
 R.isUndefned(obj);
 
+// isValidDate :: * -> Boolean
+R.isValidDate(obj);
+
 // list :: a... -> [a...]
 R.list();
 
