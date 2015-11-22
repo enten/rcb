@@ -35,6 +35,9 @@ R.isArray(obj);
 // isBoolean :: * -> Boolean
 R.isBoolean(obj);
 
+// isDate :: * -> Boolean
+R.isDate(obj);
+
 // isFunction :: * -> Boolean
 R.isFunction(obj);
 
