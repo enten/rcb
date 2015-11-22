@@ -83,6 +83,13 @@ R.isFunction = R.is(Function);
 R.isNumber = R.is(Number);
 
 /**
+ * See if an object is a numeric.
+ *
+ * @sig * -> Boolean
+ */
+R.isNumeric = R.allPass([isFinite, R.pipe(Number, R.complement(isNaN))]);
+
+/**
  * See if an object is an object.
  *
  * @sig * -> Boolean
