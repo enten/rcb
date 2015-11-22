@@ -1,0 +1,169 @@
+// rcb v0.0.1
+// https://github.com/enten/rcb
+// Ramda may be freely distributed under the MIT license.
+
+var R = module.exports = require('ramda');
+
+/**
+ * Mutates an object by setting or overriding the specified property with
+ * the given value.
+ *
+ * @sig String -> a -> {k: v} -> {k: v}
+ */
+R.assign = R.curry(function (prop, val, obj) {
+  obj[prop] = val;
+  return obj;
+});
+
+/**
+ * Set properties only if they don't exist.
+ *
+ * Useful for passing defaults similarly to lodash's `_.defaults`.
+ *
+ * @sig {k: v} -> {k: v} -> {k: v}
+ */
+R.defaults = R.flip(R.merge);
+
+/**
+ * Index objects by property name.
+ *
+ * Given a property name to index-by and a list of objects, each guaranteed
+ * to have the indexing property set, returns an object indexing the objects
+ * by their keys.
+ *
+ * Notes:
+ *  - If multiple objects have the same value for the indexing property,
+ *    the behavior is unreliable: only one object is collected, and there's
+ *    no guarantee as to which one would it be.
+ *  - If one or more objects don't have the indexing property, the indexing
+ *    value is undefined.
+ *  - The indexing property values are coerced to strings.
+ *
+ * @sig String -> [{k: v}] -> {String: {k: v}}
+ */
+R.indexBy = R.curry(function(prop, list) {
+  return R.mapObj(R.head, R.groupBy(R.prop(prop), list));
+});
+
+/**
+ * See if an object is an array.
+ *
+ * @sig * -> Boolean
+ */
+R.isArray = R.is(Array);
+
+/**
+ * See if an object is a boolean.
+ *
+ * @sig * -> Boolean
+ */
+R.isBoolean = R.is(Boolean);
+
+/**
+ * See if an object is a function.
+ *
+ * @sig * -> Boolean
+ */
+R.isFunction = R.is(Function);
+
+/**
+ * See if an object is a number.
+ *
+ * @sig * -> Boolean
+ */
+R.isNumber = R.is(Number);
+
+/**
+ * See if an object is an object.
+ *
+ * @sig * -> Boolean
+ */
+R.isObject = R.is(Object);
+
+/**
+ * See if an object is a plain object.
+ *
+ * @sig * -> Boolean
+ */
+R.isPlainObject = R.both(R.isObject, R.complement(R.isFunction));
+
+/**
+ * See if an object is a string.
+ *
+ * @sig * -> Boolean
+ */
+R.isString = R.is(String);
+
+/**
+ * See if an object is undefined.
+ *
+ * @sig * -> Boolean
+ */
+R.isUndefined = function (value) {
+  return typeof value === 'undefined';
+};
+
+/**
+ * Create a `list` function.
+ *
+ * @sig a... -> [a...]
+ */
+R.list = R.unapply(R.identity);
+
+/**
+ * Map keys of an object.
+ *
+ * @sig (String -> String) -> {k: v} -> {k: v}
+ */
+R.mapKeys = R.curry(function (fn, obj) {
+  return R.fromPairs(R.map(R.adjust(fn, 0), R.toPairs(obj)));
+});
+
+/**
+ * Get an object's method names.
+ *
+ * @sig Object -> [String]
+ */
+R.methodNames = R.compose(R.keys, R.pickBy(R.is(Function)));
+
+/**
+ * Make an object out of keys, with values derived from them.
+ *
+ * @sig (String -> a) -> [String] -> {String: a}
+ */
+R.objFromKeys = R.curry(function (fn, keys) {
+  return R.zipObj(keys, R.map(fn, keys));
+});
+
+/**
+ * Get object size.
+ *
+ * @sig Object -> Number
+ */
+R.objSize = R.nAry(1, R.pipe(
+  R.when(R.is(Object), R.keys),
+  R.when(R.is(Boolean), R.cond([[R.equals(false), R.always(null)], [R.T, R.always(1)]])),
+  R.when(R.is(Number), R.toString),
+  R.ifElse(R.isNil, R.always(0), R.length)
+));
+
+/**
+ * Pick values a from list by indexes.
+ *
+ * @sig [Number] -> [a] -> [a]
+ */
+R.pickIndexes = R.compose(R.alues, R.pickAll);
+
+/**
+ * Returns the elements of the given list or string from index.
+ *
+ * @sig Number -> [a] -> [a]
+ */
+R.sliceFrom = R.slice(R.__, Infinity);
+
+/**
+ * Returns the elements of the given list or string to index.
+ *
+ * @sig Number -> [a] -> [a]
+ */
+R.sliceTo = R.useWith(R.slice(0), [R.inc, R.identity]);

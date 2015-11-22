@@ -1,0 +1,27 @@
+{
+  "name": "rcb",
+  "version": "0.0.1",
+  "description": "Ramda Cookbook",
+  "main": "index.js",
+  "dependencies": {
+    "ramda": "^0.18.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enten/rcb.git"
+  },
+  "keywords": [
+    "ramda",
+    "cookbook"
+  ],
+  "author": "Steven Enten <steven@enten.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enten/rcb/issues"
+  },
+  "homepage": "https://github.com/enten/rcb#readme"
+}
