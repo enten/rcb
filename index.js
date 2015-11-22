@@ -118,6 +118,18 @@ R.isPlainObject = R.both(R.isObject, R.complement(R.isFunction));
 R.isString = R.is(String);
 
 /**
+ * See if an object is a valid date.
+ *
+ * @sig * -> Boolean
+ */
+R.isValidDate = function (obj) {
+  if (!R.isDate(obj)) {
+    obj = R.toDate(obj);
+  }
+  return !isNaN(obj.getTime());
+};
+
+/**
  * See if an object is undefined.
  *
  * @sig * -> Boolean
