@@ -5,6 +5,15 @@
 var R = module.exports = require('ramda');
 
 /**
+ * Apply an object to a function.
+ *
+ * @sig ({k: v} -> a) -> {k: v} -> a
+ */
+R.applyTo = R.curry(function (fn, obj) {
+  return fn(obj);
+});
+
+/**
  * Mutates an object by setting or overriding the specified property with
  * the given value.
  *
