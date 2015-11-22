@@ -94,7 +94,7 @@ R.isNumber = R.is(Number);
  *
  * @sig * -> Boolean
  */
-R.isNumeric = R.allPass([isFinite, R.pipe(Number, R.complement(isNaN))]);
+R.isNumeric = R.pipe(R.when(R.complement(R.isNumber), Number), R.complement(isNaN));
 
 /**
  * See if an object is an object.
