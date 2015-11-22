@@ -1,10 +1,25 @@
 # rcb
 
-[Ramda](https://github.com/ramda/ramda) [Cookbook](https://github.com/ramda/ramda/wiki/Cookbook).
+[Ramda](https://github.com/ramda/ramda) [Cookbook](https://github.com/ramda/ramda/wiki/Cookbook) implementation.
+
+## Installation
+
+```
+npm install rcb
+```
+
+## Usage
+
+```javascript
+var R = require('rcb');
+```
 
 ## API
 
 ```javascript
+// applyTo :: ({k: v} -> a) -> {k: v} -> a
+R.applyTo(fn, obj);
+
 // assign :: String -> a -> {k: v} -> {k: v}
 R.assign(prop, val, obj);
 
@@ -41,6 +56,9 @@ R.isUndefned(value);
 // list :: a... -> [a...]
 R.list();
 
+// listN :: Number -> a... -> [a...]
+R.listN(n);
+
 // mapKeys :: (String -> String) -> {k: v} -> {k: v}
 R.mapKeys(fn, obj);
 
@@ -61,6 +79,18 @@ R.sliceFrom(index, list);
 
 // sliceTo :: Number -> [a] -> [a]
 R.sliceTo(index, list);
+
+// toBoolean :: * -> Boolean
+R.toBoolean(obj);
+
+// toDate :: * -> Date
+R.toDate(obj);
+
+// toNumber :: * -> Number
+R.toNumber(obj);
+
+// toString :: * -> String
+R.toString(obj);
 ```
 
 ## License

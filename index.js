@@ -1,4 +1,4 @@
-// rcb v0.0.1
+// rcb v0.0.2
 // https://github.com/enten/rcb
 // Ramda may be freely distributed under the MIT license.
 
@@ -123,7 +123,7 @@ R.list = R.unapply(R.identity);
  * Create a list from arguments with specified size.
  *
  * @sig Number -> a... -> [a...]
- */ 
+ */
 R.listN = R.curryN(2, function (n) {
   var list, size;
   list = R.apply(R.list)(R.tail(arguments));
