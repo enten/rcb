@@ -242,6 +242,9 @@ R.toBoolean = function (value) {
  * @sig * -> Date
  */
 R.toDate = function () {
+  if (R.objSize(arguments) === 1 && R.isNumeric(arguments[0])) {
+    arguments[0] = R.toNumber(arguments[0]);
+  }
   return new (Function.prototype.bind.apply(Date, R.concat([null], R.values(arguments))));
 };
 
