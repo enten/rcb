@@ -120,6 +120,24 @@ R.isUndefined = function (value) {
 R.list = R.unapply(R.identity);
 
 /**
+ * Create a list from arguments with specified size.
+ *
+ * @sig Number -> a... -> [a...]
+ */ 
+R.listN = R.curryN(2, function (n) {
+  var list, size;
+  list = R.apply(R.list)(R.tail(arguments));
+  size = list.length;
+  if (size > n) {
+    list.length = n;
+  }
+  if (size < n) {
+    list = R.concat(list, R.repeat(undefined, n-size));
+  }
+  return list;
+});
+
+/**
  * Map keys of an object.
  *
  * @sig (String -> String) -> {k: v} -> {k: v}
