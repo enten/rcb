@@ -30,28 +30,31 @@ R.defaults(a, b);
 R.indexBy(prop, list);
 
 // isArray :: * -> Boolean
-R.isArray(value);
+R.isArray(obj);
 
 // isBoolean :: * -> Boolean
-R.isBoolean(value);
+R.isBoolean(obj);
 
 // isFunction :: * -> Boolean
-R.isFunction(value);
+R.isFunction(obj);
 
 // isNumber :: * -> Boolean
-R.isNumber(value);
+R.isNumber(obj);
+
+// isNumeric :: * -> Boolean
+R.isNumeric(obj);
 
 // isObject :: * -> Boolean
-R.isObject(value);
+R.isObject(obj);
 
 // isPlainObject :: * -> Boolean
-R.isPlainObject(value);
+R.isPlainObject(obj);
 
 // isString :: * -> Boolean
-R.isString(value);
+R.isString(obj);
 
 // isUndefned :: * -> Boolean
-R.isUndefned(value);
+R.isUndefned(obj);
 
 // list :: a... -> [a...]
 R.list();
