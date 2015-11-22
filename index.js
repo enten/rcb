@@ -167,3 +167,41 @@ R.sliceFrom = R.slice(R.__, Infinity);
  * @sig Number -> [a] -> [a]
  */
 R.sliceTo = R.useWith(R.slice(0), [R.inc, R.identity]);
+
+/**
+ * Converts a value to a `Boolean`.
+ *
+ * @sig * -> Boolean
+ */
+R.toBoolean = function (value) {
+  if(R.isString(value)) {
+    return R.not(R.contains(R.toLower(value), ['false', 'n', 'no']));
+  }
+  if(R.isNumber(value)) {
+    return (value * 1) > 0 ? true : false;
+  }
+  return !!value;
+};
+
+/**
+ * Converts a value to a `Date`.
+ *
+ * @sig * -> Date
+ */
+R.toDate = function () {
+  return new (Function.prototype.bind.apply(Date, R.concat([null], R.values(arguments))));
+};
+
+/**
+ * Converts a value to a `Number`.
+ *
+ * @sig * -> Number
+ */
+R.toNumber = Number;
+
+/**
+* Converts a value to a `String`.
+ *
+ * @sig * -> String
+ */
+R.toString = String;
