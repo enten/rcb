@@ -69,6 +69,13 @@ R.isArray = R.is(Array);
 R.isBoolean = R.is(Boolean);
 
 /**
+ * See if an object is a date.
+ *
+ * @sig * -> Boolean
+ */
+R.isDate = R.is(Date);
+
+/**
  * See if an object is a function.
  *
  * @sig * -> Boolean
