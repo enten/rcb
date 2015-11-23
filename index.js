@@ -34,6 +34,15 @@ R.assign = R.curry(function (prop, val, obj) {
 R.defaults = R.flip(R.merge);
 
 /**
+ * Filters an object y property.
+ *
+ * @sig (a -> Boolean) -> {k: v} -> {k: v}
+ */
+R.filterObj = R.curry(function (fn, obj) {
+  return R.pick(R.filter(function (key) { return fn(obj[key]); }, R.keys(obj)), obj);
+});
+
+/**
  * Index objects by property name.
  *
  * Given a property name to index-by and a list of objects, each guaranteed
