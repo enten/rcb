@@ -26,6 +26,9 @@ R.assign(prop, val, obj);
 // defaults :: {k: v} -> {k: v} -> {k: v}
 R.defaults(a, b);
 
+// filterObj :: (a -> Boolean) -> {k: v} -> {k: v}
+R.filterObj(fn, obj);
+
 // indexBy :: String -> [{k: v}] -> {String: {k: v}}
 R.indexBy(prop, list);
 

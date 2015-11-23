@@ -1,6 +1,6 @@
 {
   "name": "rcb",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Ramda Cookbook",
   "main": "index.js",
   "dependencies": {
