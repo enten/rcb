@@ -71,11 +71,25 @@ R.indexBy = R.curry(function(prop, list) {
 R.isArray = R.is(Array);
 
 /**
+ * See if an object is not an array.
+ *
+ * @sig * -> Boolean
+ */
+R.isNotArray = R.complement(R.isArray);
+
+/**
  * See if an object is a boolean.
  *
  * @sig * -> Boolean
  */
 R.isBoolean = R.is(Boolean);
+
+/**
+ * See if an object is not a boolean.
+ *
+ * @sig * -> Boolean
+ */
+R.isBoolean = R.complement(R.isBoolean);
 
 /**
  * See if an object is a date.
@@ -85,11 +99,25 @@ R.isBoolean = R.is(Boolean);
 R.isDate = R.is(Date);
 
 /**
+ * See if an object is not a date.
+ *
+ * @sig * -> Boolean
+ */
+R.isNotDate = R.complement(R.isDate);
+
+/**
  * See if an object is a function.
  *
  * @sig * -> Boolean
  */
 R.isFunction = R.is(Function);
+
+/**
+ * See if an object is not a function.
+ *
+ * @sig * -> Boolean
+ */
+R.isNotFunction = R.complement(R.isFunction);
 
 /**
  * See if an object is a number.
@@ -99,11 +127,25 @@ R.isFunction = R.is(Function);
 R.isNumber = R.is(Number);
 
 /**
+ * See if an object is not a number.
+ *
+ * @sig * -> Boolean
+ */
+R.isNotNumber = R.complement(R.isNumber);
+
+/**
  * See if an object is a numeric.
  *
  * @sig * -> Boolean
  */
 R.isNumeric = R.pipe(R.when(R.complement(R.isNumber), Number), R.complement(isNaN));
+
+/**
+ * See if an object is not a number.
+ *
+ * @sig * -> Boolean
+ */
+R.isNotNumeric = R.complement(R.isNumeric);
 
 /**
  * See if an object is an object.
@@ -113,11 +155,25 @@ R.isNumeric = R.pipe(R.when(R.complement(R.isNumber), Number), R.complement(isNa
 R.isObject = R.is(Object);
 
 /**
+ * See if an object is not an object.
+ *
+ * @sig * -> Boolean
+ */
+R.isNotObject = R.complement(R.isObject);
+
+/**
  * See if an object is a plain object.
  *
  * @sig * -> Boolean
  */
-R.isPlainObject = R.both(R.isObject, R.complement(R.isFunction));
+R.isPlainObject = R.both(R.isObject, R.both(R.isNotArray, R.isNotFunction));
+
+/**
+ * See if an object is not a plain object.
+ *
+ * @sig * -> Boolean
+ */
+R.isNotPlainObject = R.complement(R.isPlainObject);
 
 /**
  * See if an object is a string.
@@ -125,6 +181,13 @@ R.isPlainObject = R.both(R.isObject, R.complement(R.isFunction));
  * @sig * -> Boolean
  */
 R.isString = R.is(String);
+
+/**
+ * See if an object is not a string.
+ *
+ * @sig * -> Boolean
+ */
+R.isNotString = R.complement(R.isString);
 
 /**
  * See if an object is a valid date.
@@ -139,6 +202,14 @@ R.isValidDate = function (obj) {
 };
 
 /**
+ * See if an object is not a valid date.
+ *
+ * @sig * -> Boolean
+ */
+R.isNotValidDate = R.complement(R.isValidDate);
+
+
+/**
  * See if an object is undefined.
  *
  * @sig * -> Boolean
@@ -146,6 +217,13 @@ R.isValidDate = function (obj) {
 R.isUndefined = function (value) {
   return typeof value === 'undefined';
 };
+
+/**
+ * See if an object is not undefined.
+ *
+ * @sig * -> Boolean
+ */
+R.isNotUndefined = R.complement(R.isNotUndefined);
 
 /**
  * Create a `list` function.
@@ -228,7 +306,7 @@ R.sliceFrom = R.slice(R.__, Infinity);
  *
  * @sig Number -> [a] -> [a]
  */
-R.sliceTo = R.useWith(R.slice(0), [R.inc, R.identity]);
+R.sliceTo = R.slice(0);
 
 /**
  * Converts a value to a `Boolean`.
