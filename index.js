@@ -1,4 +1,4 @@
-// rcb v0.0.8
+// rcb v0.0.9
 // https://github.com/enten/rcb
 // Ramda may be freely distributed under the MIT license.
 
