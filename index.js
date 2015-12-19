@@ -223,7 +223,7 @@ R.isUndefined = function (value) {
  *
  * @sig * -> Boolean
  */
-R.isNotUndefined = R.complement(R.isNotUndefined);
+R.isNotUndefined = R.complement(R.isUndefined);
 
 /**
  * Create a `list` function.
