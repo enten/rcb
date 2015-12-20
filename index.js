@@ -25,6 +25,16 @@ R.assign = R.curry(function (prop, val, obj) {
 });
 
 /**
+ * Mutates an object by setting or overriding with given source object.
+ *
+ * @sig {k: v} -> {k: v} -> {k: v}
+ */
+R.assignObj = R.curry(function (source, obj) {
+  _.map(_.apply(_.partialRight(_.assign, [obj])), _.toPairs(source));
+  return obj;
+});
+
+/**
  * Set properties only if they don't exist.
  *
  * Useful for passing defaults similarly to lodash's `_.defaults`.
@@ -34,7 +44,7 @@ R.assign = R.curry(function (prop, val, obj) {
 R.defaults = R.flip(R.merge);
 
 /**
- * Filters an object y property.
+ * Filters an object by property.
  *
  * @sig (a -> Boolean) -> {k: v} -> {k: v}
  */
