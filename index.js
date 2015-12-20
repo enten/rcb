@@ -30,7 +30,7 @@ R.assign = R.curry(function (prop, val, obj) {
  * @sig {k: v} -> {k: v} -> {k: v}
  */
 R.assignObj = R.curry(function (source, obj) {
-  _.map(_.apply(_.partialRight(_.assign, [obj])), _.toPairs(source));
+  R.map(R.apply(R.partialRight(R.assign, [obj])), R.toPairs(source));
   return obj;
 });
 
