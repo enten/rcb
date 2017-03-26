@@ -2,6 +2,12 @@
 
 [Ramda](https://github.com/ramda/ramda) [Cookbook](https://github.com/ramda/ramda/wiki/Cookbook) implementation.
 
+## !!! Warning !!!
+
+This library is not production ready, but contains workable ideas and concepts.
+Rcb is no longer maintained and has been assimilated into [ramda-adjunct](https://github.com/char0n/ramda-adjunct)
+codebase. 
+
 ## Installation
 
 ```
